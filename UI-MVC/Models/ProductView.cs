@@ -16,8 +16,6 @@ namespace UI_MVC.Models
         public double Price { get; set; }
         public int Stock { get; set; }
         public bool Shine { get; set; }
-        public int? Collection_id { get; set; }
-        public bool Active { get; set; }
         public string Url_image { get; set; }
         public string Ref_image { get; set; }
     }

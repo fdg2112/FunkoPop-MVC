@@ -24,6 +24,18 @@ namespace Logic
             }
         }
 
+        public Product GetOne()
+        {
+            try
+            {
+                return _context.Product.FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el producto.", ex);
+            }
+        }
+
         public List<Product> GetAll()
         {
             try

@@ -5,22 +5,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using UI_MVC.Models;
 
 namespace UI_MVC.Controllers
 {
     public class ProductController : Controller
     {
+        readonly ProductLogic productLogic = new ProductLogic();
+
         // GET: Product
         public ActionResult Index()
         {
-            List<Product> products = ProductLogic.GetAll();
+            List<Product> products = productLogic.GetAll();
             List<ProductView> productsView = products.Select(s => new ProductView
             {
-                ProductID = s.ProductID,
-                ProductName = s.ProductName,
-                UnitPrice = s.UnitPrice,
-                UnitsInStock = s.UnitsInStock
+                Id = s.Id,
+                Catalog_number = s.Catalog_number,
+                Name = s.Name,
+                Description = s.Description,
+                Price = s.Price,
+                Stock = s.Stock,
+                Shine = s.Shine
             }).ToList();
 
             return View(productsView);
@@ -36,11 +41,14 @@ namespace UI_MVC.Controllers
         {
             try
             {
-                Products productEntity = new Products
+                Product productEntity = new Product
                 {
-                    ProductName = productView.ProductName,
-                    UnitPrice = productView.UnitPrice,
-                    UnitsInStock = productView.UnitsInStock
+                    Catalog_number = productView.Catalog_number,
+                    Name = productView.Name,
+                    Description = productView.Description,
+                    Price = productView.Price,
+                    Stock = productView.Stock,
+                    Shine = productView.Shine
                 };
                 productLogic.Add(productEntity);
                 return RedirectToAction("Index");
@@ -68,12 +76,15 @@ namespace UI_MVC.Controllers
         {
             try
             {
-                Products productEntity = new Products
+                Product productEntity = new Product
                 {
-                    ProductID = id,
-                    ProductName = productView.ProductName,
-                    UnitPrice = productView.UnitPrice,
-                    UnitsInStock = productView.UnitsInStock
+                    Id = id,
+                    Catalog_number = productView.Catalog_number,
+                    Name = productView.Name,
+                    Description = productView.Description,
+                    Price = productView.Price,
+                    Stock = productView.Stock,
+                    Shine = productView.Shine
                 };
                 productLogic.Update(productEntity);
                 return RedirectToAction("Index");
