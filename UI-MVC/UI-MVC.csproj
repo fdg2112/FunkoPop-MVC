@@ -128,11 +128,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\CollectionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\CollectionAdminController.cs" />
+    <Compile Include="Controllers\ProductAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CollectionsView.cs" />
     <Compile Include="Models\ProductView.cs" />
     <Compile Include="Models\UserHomeView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,7 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Product\" />
     <Folder Include="Views\UserHomeView\" />
   </ItemGroup>
   <ItemGroup>
@@ -229,11 +231,11 @@
       <Name>Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{4AAB23AB-1CE4-4ACD-B46F-16EC28DE29D5}</Project>
+      <Project>{4aab23ab-1ce4-4acd-b46f-16ec28de29d5}</Project>
       <Name>Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
-      <Project>{F31B1F77-8648-472B-A2B1-43AE5E638998}</Project>
+      <Project>{f31b1f77-8648-472b-a2b1-43ae5e638998}</Project>
       <Name>Logic</Name>
     </ProjectReference>
   </ItemGroup>

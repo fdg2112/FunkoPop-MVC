@@ -11,34 +11,28 @@ namespace UI_MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ProductLogic _productLogic;
+        private readonly CollectionLogic _collectionLogic;
         public HomeController()
         {
             _productLogic = new ProductLogic();
         }
-        //public ActionResult Index()
-        //{
-        //    var productsAZ = _productLogic.GetAll().OrderBy(p => p.Name);
-        //    var productsZA = _productLogic.GetAll().OrderByDescending(p => p.Name);
-        //    var productsByPriceAsc = _productLogic.GetAll().OrderBy(p => p.Price);
-        //    var productsByPriceDesc = _productLogic.GetAll().OrderByDescending(p => p.Price);
-        //    var productsShine = _productLogic.GetAll().Where(p => p.Shine = true);
-        //    var viewModel = new UserHomeView
-        //    {
-        //        ProductsAZ = productsAZ,
-        //        ProductsZA = productsZA,
-        //        ProductsByPriceAsc = productsByPriceAsc,
-        //        ProductsByPriceDesc = productsByPriceDesc,
-        //        ProductsShine = productsShine
-        //    };
-        //    return View(viewModel);
-        //}
 
         public ActionResult Index()
         {
-            var unProducto = _productLogic.GetOne();
+            var productos = _productLogic.GetAllActives();
             var viewModel = new UserHomeView
             {
-                OneProduct = unProducto
+                AllProducts = productos
+            };
+            return View(viewModel);
+        }
+
+        public ActionResult Collections()
+        {
+            var collections = _collectionLogic.GetAllActives();
+            var viewModel = new UserHomeView
+            {
+                AllCollections = collections
             };
             return View(viewModel);
         }

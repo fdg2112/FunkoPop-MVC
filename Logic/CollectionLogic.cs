@@ -36,6 +36,18 @@ namespace Logic
             }
         }
 
+        public List<Product> GetAllActives()
+        {
+            try
+            {
+                return _context.Product.Where(p => p.Active && p.Stock > 0).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener la lista de productos.", ex);
+            }
+        }
+
         public List<Collection> GetList(FilterParams filterParams)
         {
             try

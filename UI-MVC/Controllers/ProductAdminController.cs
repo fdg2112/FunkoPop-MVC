@@ -9,7 +9,7 @@ using UI_MVC.Models;
 
 namespace UI_MVC.Controllers
 {
-    public class ProductController : Controller
+    public class ProductAdminController : Controller
     {
         readonly ProductLogic productLogic = new ProductLogic();
 

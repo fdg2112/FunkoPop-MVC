@@ -5,17 +5,20 @@
 }
 
 <main>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-            <div class="card text-white bg-secondary mb-3">
-                <img src="~/Resources/@Model.OneProduct.Url_image" class="card-img-top" alt="Imagen 1" style="max-height: 200px;">
-                <div class="card-header">Producto en Oferta!</div>
-                <div class="card-body">
-                    <h5 class="card-title">@Model.OneProduct.Name</h5>
-                    <p class="card-text">Precio: @Model.OneProduct.Price</p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        @foreach (var product in Model.AllProducts)
+        {
+            <div class="col mb-4">
+                <div class="card text-white bg-secondary square-card">
+                    <img src="@product.Url_image" class="card-img-top square-image" alt="@product.Name">
+                    <div class="card-header">@product.Name</div>
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Description</h5>
+                        <p class="card-text">Precio: @product.Price</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </main>
 
@@ -26,28 +29,39 @@
         padding: 0;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
     }
 
-    .card {
+    .square-card {
         background-color: #f0f0f0;
         border: none;
         padding: 10px;
-        height: 100%;
+        width: 100%; /* Ancho deseado */
+        height: 100%; /* Alto deseado */
         transition: transform 0.3s;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+    .card-img-top.square-image {
+        max-width: 100%; /* Asegura que la imagen no sea más ancha que la tarjeta */
+        max-height: 70%; /* Ajusta la altura de la imagen */
+        object-fit: contain; /* Escala la imagen para ajustarse al espacio sin cortarla */
+    }
 
-        .card h5 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
+    .card:hover {
+        transform: translateY(-5px);
+    }
 
-        .card p {
-            margin-bottom: 3px;
-        }
+    .card h5 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .card p {
+        margin-bottom: 3px;
+    }
 </style>
+
+
+
+

@@ -8,11 +8,7 @@ namespace UI_MVC.Models
 {
 	public class UserHomeView
 	{
-        public IEnumerable<Product> ProductsAZ { get; set; }
-        public IEnumerable<Product> ProductsZA { get; set; }
-        public IEnumerable<Product> ProductsByPriceAsc { get; set; }
-        public IEnumerable<Product> ProductsByPriceDesc { get; set; }
-        public IEnumerable<Product> ProductsShine { get; set; }
-        public Product OneProduct { get; set; }
+        public List<Product> AllProducts { get; set; }
+        public List<Product> AllCollections { get; set; }
     }
 }
