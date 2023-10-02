@@ -1,35 +1,25 @@
-﻿@using System.Linq
-
-
-@{
-    ViewBag.Title = "Home Page";
-}
-
-@using System.Linq
-
+﻿@model UI_MVC.Models.UserHomeView
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Collections";
 }
 
 <main>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-        @foreach (var product in Model.AllProducts)
+        @foreach (var collection in Model.AllCollections)
         {
             <div class="col mb-4">
-                <div class="card text-white bg-secondary square-card" data-toggle="modal" data-target="#productModal" data-product-id="@product.Id">
-                    <img src="@product.Url_image" class="card-img-top square-image" alt="@product.Name">
-                    <div class="card-header">@product.Name</div>
+                <div class="card text-white bg-secondary square-card">
+                    <img src="@collection.Url_image" class="card-img-top square-image" alt="@collection.Name">
+                    <div class="card-header">@collection.Name</div>
                     <div class="card-body">
-                        <h5 class="card-title">@product.Description</h5>
-                        <p class="card-text">Precio: @product.Price</p>
+                        <h5 class="card-title">@collection.Description</h5>
                     </div>
                 </div>
             </div>
         }
     </div>
 </main>
-
 
 <style>
     body {
@@ -70,7 +60,3 @@
         margin-bottom: 3px;
     }
 </style>
-
-
-
-
