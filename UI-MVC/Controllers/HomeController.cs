@@ -1,9 +1,5 @@
 ﻿using Entities;
 using Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using UI_MVC.Models;
 
@@ -28,23 +24,29 @@ namespace UI_MVC.Controllers
             };
             return View(viewModel);
         }
-        public ActionResult ProductDetailsModal(int id)
+
+        public ActionResult ProductDetail(int id)
         {
             Product product = _productLogic.Get(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("ProductDetail", product);
-        }
-        public ActionResult Details(int id)
-        {
-            Product product = _productLogic.Get(id);
-            if (product == null)
+
+            var productView = new ProductView
             {
-                return HttpNotFound();
-            }
-            return View(product);
+                Id = product.Id,
+                Catalog_number = product.Catalog_number,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                Stock = product.Stock,
+                Shine = product.Shine,
+                Url_image = product.Url_image,
+                Ref_image = product.Ref_image
+            };
+
+            return View(productView);
         }
 
 

@@ -2,100 +2,69 @@
 
 @{
     ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="modal fade" id="productModal-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="productModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="productModalLabel">@Model.Name</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Contenido de los detalles del producto -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                <!-- Otros botones o acciones -->
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 80vh;">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-secondary square-card" style="margin-top: 20px;">
+                <!-- Ajusta el valor de margin-top según tu preferencia -->
+                <img src="@Model.Url_image" class="card-img-top square-image" alt="@Model.Name">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.Name</h3>
+                    <p class="card-text">@Model.Description</p>
+                    <h4>Precio: $@Model.Price</h4>
+                    <p>Stock Disponible: @Model.Stock</p>
+                    <p>Brilla: @(Model.Shine ? "Sí" : "No")</p>
+                    <div class="mt-4">
+                        <button class="btn btn-primary">Agregar a Favoritos</button>
+                        <button class="btn btn-success">Agregar al Carrito</button>
+                        <button class="btn btn-info">Comprar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<style>
+    body {
+        background: linear-gradient(to top, #D3959B, #BFE6BA);
+        margin: 0;
+        padding: 0;
+    }
 
-<div>
-    <h4>ProductView</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Catalog_number)
-        </dt>
+    .square-card {
+        background-color: #f0f0f0;
+        border: none;
+        padding: 10px;
+        max-width: 800px; /* Ancho máximo fijo */
+        width: 100%; /* Ancho mínimo para dispositivos pequeños */
+        min-height: 100%;
+        margin: 0 auto; /* Centrar horizontalmente */
+        transition: transform 0.3s;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Catalog_number)
-        </dd>
+    .card-img-top.square-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    .card h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    .card h4 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+    .card p {
+        margin-bottom: 3px;
+    }
+</style>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Shine)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Shine)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Url_image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Url_image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ref_image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ref_image)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

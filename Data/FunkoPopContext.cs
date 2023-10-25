@@ -214,6 +214,5 @@ namespace Data
                 .HasForeignKey(e => e.User_id)
                 .WillCascadeOnDelete(false);
         }
-
     }
 }

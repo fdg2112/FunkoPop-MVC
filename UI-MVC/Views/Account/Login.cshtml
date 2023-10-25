@@ -1,0 +1,23 @@
+﻿@model UI_MVC.Models.LoginView
+
+@{
+    ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Si tienes un layout compartido.
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2>Iniciar sesión</h2>
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar sesión con Google</button>
+            }
+        </div>
+    </div>
+</div>

@@ -18,6 +18,19 @@ namespace UI_MVC
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "ProductDetail",
+                url: "Home/ProductDetail/{id}",
+                defaults: new { controller = "Home", action = "ProductDetail", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Login",
+                url: "Account/Login",
+                defaults: new { controller = "Account", action = "Login" }
+            );
+
         }
     }
 }

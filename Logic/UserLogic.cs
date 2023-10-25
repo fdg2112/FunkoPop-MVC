@@ -156,5 +156,18 @@ namespace Logic
                 throw new Exception("Error al obtener el usuario.", ex);
             }
         }
+
+        public User GetUserByEmail(string email)
+        {
+            try
+            {
+                return _context.User.FirstOrDefault(user => user.Email == email);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el usuario.", ex);
+            }
+        }
+
     }
 }
